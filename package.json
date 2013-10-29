@@ -1,7 +1,7 @@
 {
 	"name": "FacebookBoilerplate",
 	"version": "0.1.0",
-	"author": "Thomas Deinhamer",
+	"author": "Thomas Deinhamer <thasmo@gmail.com>",
 	"private": true,
 
 	"devDependencies": {
