@@ -1,0 +1,19 @@
+{
+	"name": "FacebookBoilerplate",
+	"version": "0.1.0",
+	"authors": [
+		"Thomas Deinhamer <thasmo@gmail.com>"
+	],
+	"license": "MIT",
+	"private": true,
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components"
+	],
+	"dependencies": {
+		"normalize-css": "~2.1.3",
+		"jquery": "~1.10.2",
+		"facebook-php-sdk": "https://github.com/facebook/facebook-php-sdk.git"
+	}
+}

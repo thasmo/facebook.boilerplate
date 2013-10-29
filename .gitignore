@@ -7,3 +7,4 @@ Thumbs.db
 
 # Automation
 /node_modules/
+/bower_components/
