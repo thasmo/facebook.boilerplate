@@ -1,0 +1,9 @@
+# OS
+Thumbs.db
+.DS_Store
+
+# Development
+/.idea/
+
+# Automation
+/node_modules/
