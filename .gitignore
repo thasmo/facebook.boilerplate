@@ -10,3 +10,9 @@ Thumbs.db
 /bower_components/
 /vendor/
 composer.lock
+
+# Project
+cache/
+
+/application/configuration/*
+!/application/configuration/distribution.php
