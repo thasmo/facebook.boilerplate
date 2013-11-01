@@ -5,6 +5,9 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		watch: {
+			templates: {
+				files: ['application/template/**/*.html']
+			},
 			styles: {
 				files: ['application/asset/**/*.css'],
 				tasks: ['cssmin']
