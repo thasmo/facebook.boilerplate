@@ -14,7 +14,6 @@
 	"dependencies": {
 		"normalize-css": "~2.1",
 		"html5shiv": "~3.7",
-		"jquery": "~1.10",
-		"facebook-php-sdk": "https://github.com/facebook/facebook-php-sdk.git"
+		"jquery": "~1.10"
 	}
 }
