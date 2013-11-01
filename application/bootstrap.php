@@ -24,50 +24,30 @@ date_default_timezone_set($configuration['timezone']);
 
 # load application
 $application = new Silex\Application();
-$application['debug'] = TRUE;
+$application['debug'] = (boolean)$configuration['debug'];
 
 # register template service
 $application->register(new Silex\Provider\TwigServiceProvider, array(
 	'twig.path'            => __DIR__ . '/../application/template',
 	'twig.options'         => array(
-		'debug'            => TRUE,
-		'auto_reload'      => TRUE,
-		'strict_variables' => TRUE,
+		'debug'            => (boolean)$configuration['debug'],
+		'strict_variables' => FALSE,
 		'cache'            => __DIR__ . '/../application/cache',
 	),
 ));
 
+# register facebook sdk
+$application->register(new Tobiassjosten\Silex\Provider\FacebookServiceProvider(), array(
+	'facebook.app_id' => $configuration['facebook']['appId'],
+	'facebook.secret' => $configuration['facebook']['secret']
+));
+
 # before request dispatching
-$application->before(function ($request) use ($configuration, $application) {
+$application->before(function() use($configuration, $application) {
 
-});
+	# get signed request
+	$signedRequest = $application['facebook']->getSignedRequest();
 
-# configuration controller
-$application->get('configuration.json', function() use ($configuration, $application) {
-
-	# @important: remove secret token
-	unset($configuration['facebook']['secret']);
-
-	# render json data
-	return $application->json($configuration);
-});
-
-# index controller
-$application->get('/', function() use ($configuration, $application) {
-
-	# template context
-	$context = new stdClass;
-
-	# set application title
-	$context->title = $configuration['application']['title'];
-
-	# set tracking key
-	$context->trackingKey = $configuration['tracking']['key'];
-
-	# your code goes here
-
-	# render template
-	return $application['twig']->render('index.html', (array)$context);
 });
 
 # after controller execution
@@ -76,8 +56,35 @@ $application->after(function($request, $response) use ($configuration, $applicat
 });
 
 # after response delivery
-$application->finish(function($request, $response) use ($configuration, $application) {
+$application->finish(function(Request $request, Response $response) use ($configuration, $application) {
 
+});
+
+# configuration controller
+$application->get('configuration.json', function() use($configuration, $application) {
+
+	# @important: remove private values
+	unset($configuration['facebook']['secret']);
+	unset($configuration['tracking']);
+
+	# render json data
+	return $application->json($configuration);
+});
+
+# index controller
+$application->match('/', function() use($configuration, $application) {
+
+	# get signed request
+	$signedRequest = $application['facebook']->getSignedRequest();
+
+	# template context
+	$context = new stdClass;
+	$context->title = $configuration['application']['title'];
+	$context->trackingKey = $configuration['tracking']['key'];
+	$context->user = $signedRequest['user'];
+
+	# render template
+	return $application['twig']->render('index.html', (array)$context);
 });
 
 # run application

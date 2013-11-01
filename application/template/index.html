@@ -10,8 +10,13 @@
 		<!--[if lt IE 9]><script src="/static/script/vendor/html5shiv.js"></script><![endif]-->
 	</head>
 
-	<body>
-		<h1>Facebook Boilerplate</h1>
+	<body data-locale="{{user.locale}}">
+		<h1>{{title}}</h1>
+
+		<p>
+			<a class="js-fb-authorize" href="#" target="_top">login</a><br/>
+			<a class="js-fb-add" href="#">add to page</a>
+		</p>
 
 		<div id="fb-root"></div>
 

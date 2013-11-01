@@ -35,6 +35,7 @@ module.exports = function(grunt) {
 				files: {
 					'htdocs/static/script/application.js': [
 						'bower_components/jquery/jquery.js',
+						'application/asset/script/bootstrap.js',
 						'application/asset/script/main.js'
 					]
 				}

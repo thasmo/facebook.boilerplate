@@ -17,10 +17,9 @@ cookie               = true
 xfbml                = true
 logging              = true
 frictionlessRequests = true
-hideFlashCallback    = null
 trustForwarded       = false
-canvasWidth          = "810"
-canvasHeight         = "1000"
+canvasWidth          = 810
+canvasHeight         = 1000
 
 [tracking]
 key                  = "UA-undefined"
