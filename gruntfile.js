@@ -6,11 +6,11 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		watch: {
 			styles: {
-				files: ['application/**/*.css'],
+				files: ['application/asset/**/*.css'],
 				tasks: ['cssmin']
 			},
 			scripts: {
-				files: ['application/**/*.js'],
+				files: ['application/asset/**/*.js'],
 				tasks: ['uglify']
 			},
 			options: {
