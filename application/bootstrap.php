@@ -28,12 +28,12 @@ $application['debug'] = (boolean)$configuration['debug'];
 
 # register template service
 $application->register(new Silex\Provider\TwigServiceProvider, array(
-	'twig.path'            => __DIR__ . '/../application/template',
+	'twig.path'            => __DIR__ . '/template',
 	'twig.options'         => array(
 		'debug'            => (boolean)$configuration['debug'],
 		'strict_variables' => FALSE,
-		'cache'            => __DIR__ . '/../application/cache',
-	),
+		'cache'            => __DIR__ . '/cache'
+	)
 ));
 
 # register facebook sdk
