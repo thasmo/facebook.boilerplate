@@ -42,22 +42,9 @@ $application->register(new Tobiassjosten\Silex\Provider\FacebookServiceProvider(
 	'facebook.secret' => $configuration['facebook']['secret']
 ));
 
-# before request dispatching
-$application->before(function() use($configuration, $application) {
-
-	# get signed request
-	$signedRequest = $application['facebook']->getSignedRequest();
-
-});
-
-# after controller execution
-$application->after(function($request, $response) use ($configuration, $application) {
-
-});
-
-# after response delivery
-$application->finish(function(Request $request, Response $response) use ($configuration, $application) {
-
+# channel file controller
+$application->get('channel.html', function() use($configuration, $application) {
+	return '<script src="//connect.facebook.net/en_US/all.js"></script>';
 });
 
 # configuration controller
@@ -65,27 +52,13 @@ $application->get('configuration.json', function() use($configuration, $applicat
 
 	# @important: remove private values
 	unset($configuration['facebook']['secret']);
-	unset($configuration['tracking']);
 
 	# render json data
 	return $application->json($configuration);
 });
 
-# index controller
-$application->match('/', function() use($configuration, $application) {
+# require the controllers
+require('main.php');
 
-	# get signed request
-	$signedRequest = $application['facebook']->getSignedRequest();
-
-	# template context
-	$context = new stdClass;
-	$context->title = $configuration['application']['title'];
-	$context->trackingKey = $configuration['tracking']['key'];
-	$context->user = $signedRequest['user'];
-
-	# render template
-	return $application['twig']->render('index.html', (array)$context);
-});
-
-# run application
-$application->run();
+# return application
+return $application;

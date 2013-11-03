@@ -76,10 +76,21 @@ application.main = function() {
 	(function() {
 
 		$(function() {
-			$('.js-fb-authorize').on('click', function(event) {
+			$('.js-fb-login').on('click', function(event) {
 
 				FB.login(function(response) {}, {
 					scope: configuration.facebook.scope
+				});
+
+				event.preventDefault();
+			});
+		});
+
+		$(function() {
+			$('.js-fb-logout').on('click', function(event) {
+
+				FB.logout(function(response) {
+
 				});
 
 				event.preventDefault();

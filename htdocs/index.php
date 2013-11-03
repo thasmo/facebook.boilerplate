@@ -1,4 +1,8 @@
 <?php
 
+# define the application context
 define('CONTEXT', 'development');
-require('../application/bootstrap.php');
+
+# run the application
+$application = require('../application/bootstrap.php');
+$application->run();

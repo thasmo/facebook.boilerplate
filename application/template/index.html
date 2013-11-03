@@ -14,8 +14,15 @@
 		<h1>{{title}}</h1>
 
 		<p>
-			<a class="js-fb-authorize" href="#" target="_top">login</a><br/>
+			{% if not user %}
+			<a class="js-fb-login" href="#" target="_top">login</a><br/>
+			{% elseif not signedRequest %}
+			<a class="js-fb-logout" href="#" target="_top">logout</a><br/>
+			{% endif %}
+
+			{% if signedRequest.page.admin %}
 			<a class="js-fb-add" href="#">add to page</a>
+			{% endif %}
 		</p>
 
 		<div id="fb-root"></div>
