@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 # load application configuration
-$configuration = parse_ini_file(__DIR__ . '/../application/configuration/' . CONTEXT . '.php', TRUE);
+$configuration = parse_ini_file('configuration/' . CONTEXT . '.php', TRUE);
 
 # configure error handling
 if($configuration['debug']) {
