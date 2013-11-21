@@ -26,6 +26,9 @@ $application->match('/', function() use($configuration, $application) {
 		$templateContext->user = $user;
 	}
 
+	# detect mobile
+	$templateContext->isMobile = $application['mobile_detect']->isMobile();
+
 	# render template
 	return $application['twig']->render('index.html', (array)$templateContext);
 })->method('GET|POST');

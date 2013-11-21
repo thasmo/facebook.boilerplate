@@ -10,7 +10,7 @@
 		<!--[if lt IE 9]><script src="/static/script/vendor/html5shiv.js"></script><![endif]-->
 	</head>
 
-	<body data-locale="{{user.locale}}">
+	<body class="{{isMobile ? 'mobile' : 'desktop'}}" data-locale="{{user.locale}}">
 		<h1>{{title}}</h1>
 
 		<p>

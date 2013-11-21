@@ -42,6 +42,9 @@ $application->register(new Tobiassjosten\Silex\Provider\FacebookServiceProvider(
 	'facebook.secret' => $configuration['facebook']['secret']
 ));
 
+# register mobile detect service
+$application->register(new Binfo\Silex\MobileDetectServiceProvider);
+
 # channel file controller
 $application->get('channel.html', function() use($configuration, $application) {
 	return '<script src="//connect.facebook.net/en_US/all.js"></script>';
