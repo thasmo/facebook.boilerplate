@@ -37,7 +37,7 @@ $application->register(new Silex\Provider\TwigServiceProvider, array(
 ));
 
 # register facebook sdk
-$application->register(new Tobiassjosten\Silex\Provider\FacebookServiceProvider(), array(
+$application->register(new Tobiassjosten\Silex\Provider\FacebookServiceProvider, array(
 	'facebook.app_id' => $configuration['facebook']['appId'],
 	'facebook.secret' => $configuration['facebook']['secret']
 ));
