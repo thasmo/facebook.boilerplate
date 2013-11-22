@@ -45,23 +45,10 @@ $application->register(new Tobiassjosten\Silex\Provider\FacebookServiceProvider,
 # register mobile detect service
 $application->register(new Binfo\Silex\MobileDetectServiceProvider);
 
-# channel file controller
-$application->get('channel.html', function() use($configuration, $application) {
-	return '<script src="//connect.facebook.net/en_US/all.js"></script>';
-});
-
-# configuration controller
-$application->get('configuration.json', function() use($configuration, $application) {
-
-	# @important: remove private values
-	unset($configuration['facebook']['secret']);
-
-	# render json data
-	return $application->json($configuration);
-});
-
-# require the controllers
-require('main.php');
+# load controllers
+foreach(glob(__DIR__ . '/controller/*.php') as $path) {
+	include($path);
+}
 
 # return application
 return $application;
