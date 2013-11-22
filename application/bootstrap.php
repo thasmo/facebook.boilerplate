@@ -32,7 +32,7 @@ $application->register(new Silex\Provider\TwigServiceProvider, array(
 	'twig.options'         => array(
 		'debug'            => (boolean)$configuration['debug'],
 		'strict_variables' => FALSE,
-		'cache'            => __DIR__ . '/cache'
+		'cache'            => __DIR__ . '/../cache'
 	)
 ));
 
