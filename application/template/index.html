@@ -11,6 +11,8 @@
 	</head>
 
 	<body class="{{isMobile ? 'mobile' : 'desktop'}}" data-locale="{{user.locale}}">
+		<div id="fb-root"></div>
+
 		<h1>{{title}}</h1>
 
 		<p>
@@ -24,8 +26,6 @@
 			<a class="js-fb-add" href="#">add to page</a>
 			{% endif %}
 		</p>
-
-		<div id="fb-root"></div>
 
 		<script src="/static/script/application.js"></script>
 	</body>
